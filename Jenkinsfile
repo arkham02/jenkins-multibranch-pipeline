@@ -1,17 +1,17 @@
 pipeline {
   agent any
   stages {
-    stage('Build') {
+    stage('Set up env') {
       parallel {
-        stage('Build') {
-          steps {
-            timestamps()
-          }
-        }
-
         stage('Set up env') {
           steps {
             input(message: 'Proceed?', id: 'p')
+          }
+        }
+
+        stage('Build') {
+          steps {
+            echo 'building'
           }
         }
 
