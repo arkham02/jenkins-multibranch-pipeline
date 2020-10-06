@@ -22,8 +22,8 @@ pipeline{
                       mylocalenvvariable = 'Running API tests ..'
                     }
                     steps{
-                        echo "${mylocalenvvariable}"  //needs double qutes
-                        echo 'My local env variable message:'+ mylocalenvvariable
+                        echo "My local env variable message: ${mylocalenvvariable}"  //needs double qutes
+                        echo 'My local env variable message:'+ mylocalenvvariable // no need to use ${}
                     }
                 }
 
