@@ -5,6 +5,7 @@ pipeline {
       parallel {
         stage('Set up env') {
           steps {
+		  echo 'Setting up the environment'
             input(message: 'Proceed?', id: 'p')
           }
         }
