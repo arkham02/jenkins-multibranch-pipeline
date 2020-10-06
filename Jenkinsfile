@@ -40,5 +40,11 @@ pipeline{
                 echo 'Deployment only to be done for master branch ..'
             }
         }
+        
+        stage('Notify'){
+            steps{
+              echo 'notifying'
+            }
+        }
     }
 }
