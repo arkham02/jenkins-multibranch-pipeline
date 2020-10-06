@@ -21,13 +21,13 @@ pipeline{
                       mylocalenvvariable = 'Running API tests ..'
                     }
                     steps{
-                        echo '${mylocalenvvariable}'
+                        echo "${mylocalenvvariable}"
                     }
                 }
 
                 stage('Sanity UI Tests'){
                     steps{
-                        echo 'Running Sanity tests on browser : ${browser}'
+                        echo "Running Sanity tests on browser : ${browser}"
                     }
                 }
             }
