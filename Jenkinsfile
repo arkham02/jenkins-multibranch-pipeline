@@ -1,32 +1,41 @@
-pipeline {
-  agent any
-  stages {
-    stage('Set up env') {
-      parallel {
-        stage('Set up env') {
-          steps {
-		  echo 'Setting up the environment'
-            input(message: 'Proceed?', id: 'p')
-          }
+environment {
+  browser = 'chrome'
+}
+pipeline{
+    agent any
+    stages{
+        stage('Build'){
+            steps{
+                echo 'Build the project ..'
+            }
         }
+        stage('Tests in parallel'){
+            parallel{
 
-        stage('Build') {
-          steps {
-            echo 'building'
-          }
+                stage('API Tests'){
+                    environment{
+                      mylocalenvvariable = 'Running API tests ..'
+                    }
+                    steps{
+                        echo '${mylocalenvvariable}'
+                    }
+                }
+
+                stage('Sanity UI Tests'){
+                    steps{
+                        echo 'Running Sanity tests on browser : ${browser}'
+                    }
+                }
+            }
         }
-
-      }
+        stage('Deploy to UAT'){
+            when{
+              branch 'master'
+            }
+            steps{
+                input(message: 'Do you want to deploy to UAT ?', id: 'deployMsg')
+                echo 'Deployment only to be done for master branch ..'
+            }
+        }
     }
-
-    stage('Test') {
-      steps {
-        echo 'testing mode'
-      }
-    }
-
-  }
-  environment {
-    browser = 'chrome'
-  }
 }
