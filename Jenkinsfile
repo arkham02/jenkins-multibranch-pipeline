@@ -5,6 +5,9 @@
 
 pipeline{
     agent any
+    environment {
+        browser = 'chrome'
+    }
     stages{
         stage('Build'){
             steps{
@@ -19,7 +22,8 @@ pipeline{
                       mylocalenvvariable = 'Running API tests ..'
                     }
                     steps{
-                        echo "${mylocalenvvariable}"
+                        echo "${mylocalenvvariable}"  //needs double qutes
+                        echo 'My local env variable message:'+ mylocalenvvariable
                     }
                 }
 
@@ -46,7 +50,4 @@ pipeline{
             }
         }
     }
-}
-environment {
-  browser = 'chrome'
 }
