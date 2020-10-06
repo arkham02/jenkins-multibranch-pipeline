@@ -1,3 +1,6 @@
+//This file shows the use of environment variables, local env variables
+//the use of input and prompts
+//the use of when for running a stage only on a specific branch
 environment {
   browser = 'chrome'
 }
