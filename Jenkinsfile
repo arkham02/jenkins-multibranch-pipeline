@@ -1,11 +1,13 @@
 //This file shows the use of environment variables, local env variables
 //the use of input and prompts
 //the use of when for running a stage only on a specific branch
-environment {
-  browser = 'chrome'
-}
+//at the vey en - a new feature branch is created from master branch, and this comment is added to trigger the jenkins build on the new feature branch
+
 pipeline{
     agent any
+    environment {
+        browser = 'chrome'
+    }
     stages{
         stage('Build'){
             steps{
@@ -20,13 +22,14 @@ pipeline{
                       mylocalenvvariable = 'Running API tests ..'
                     }
                     steps{
-                        echo '${mylocalenvvariable}'
+                        echo "${mylocalenvvariable}"  //needs double qutes
+                        echo 'My local env variable message:'+ mylocalenvvariable
                     }
                 }
 
                 stage('Sanity UI Tests'){
                     steps{
-                        echo 'Running Sanity tests on browser : ${browser}'
+                        echo "Running Sanity tests on browser : ${browser}"
                     }
                 }
             }
