@@ -1,6 +1,7 @@
 //This file shows the use of environment variables, local env variables
 //the use of input and prompts
 //the use of when for running a stage only on a specific branch
+//at the vey en - a new feature branch is created from master branch, and this comment is added to trigger the jenkins build on the new feature branch
 environment {
   browser = 'chrome'
 }
